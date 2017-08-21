@@ -1,8 +1,14 @@
 {
   "name": "zanphp/http-server",
+  "repositories": {
+    "0": {
+      "type": "git",
+      "url": "https://github.com/sukui/server-base.git"
+    }
+  },
   "require": {
     "php": ">=5.6",
-    "zanphp/server-base": "dev-master",
+    "zanphp/server-base": "dev-laogui",
     "zanphp/http-view": "dev-master"
   },
   "autoload": {
