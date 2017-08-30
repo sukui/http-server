@@ -1,20 +1,15 @@
 {
   "name": "zanphp/http-server",
+  "repositories": {
+    "0": {
+      "type": "git",
+      "url": "https://github.com/sukui/server-base.git"
+    }
+  },
   "require": {
     "php": ">=5.6",
-    "zanphp/server-base": "dev-master",
-    "zanphp/http-view": "dev-master",
-    "zanphp/coroutine": "dev-master",
-    "zanphp/container": "dev-master",
-    "zanphp/nosql": "dev-master",
-    "zanphp/utilities": "dev-master",
-    "zanphp/http-foundation": "dev-master",
-    "zanphp/exception": "dev-master",
-    "zanphp/routing": "dev-master",
-    "zanphp/database": "dev-master",
-    "zanphp/service-store": "dev-master",
-    "zanphp/framework": "dev-master",
-    "zanphp/worker-monitor": "dev-master"
+    "zanphp/server-base": "dev-laogui",
+    "zanphp/http-view": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -30,5 +25,6 @@
     "preferred-install": "dist",
     "secure-http": false
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": false
 }
