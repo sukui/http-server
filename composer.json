@@ -13,7 +13,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Zan\\Framework\\Network\\Http\\": "src/"
+      "ZanPHP\\HttpServer\\": "src/"
     }
   },
   "extra": {
