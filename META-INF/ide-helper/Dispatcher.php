@@ -2,42 +2,20 @@
 
 namespace Zan\Framework\Network\Http;
 
-use Zan\Framework\Foundation\Application;
-use Zan\Framework\Foundation\Core\Config;
-use Zan\Framework\Contract\Network\Request;
-use Zan\Framework\Utilities\DesignPattern\Context;
-use Zan\Framework\Network\Http\Exception\PageNotFoundException; 
+use ZanPHP\Contracts\Network\Request;
+use ZanPHP\Coroutine\Context;
 
 class Dispatcher
 {
-    public function dispatch(Request $request, Context $context)
+    private $Dispatcher;
+
+    public function __construct()
     {
-        $controllerName = $context->get('controller_name');
-        $action = $context->get('action_name');
-        $args   = $context->get('action_args');
-
-        if ($args == null) {
-            $args = [];
-        }
-
-        $controller = $this->getControllerClass($controllerName);
-        if(!class_exists($controller)) {
-            throw new PageNotFoundException("controller:{$controller} not found");
-        }
-
-        $controller = new $controller($request, $context);
-        if(!is_callable([$controller, $action])) {
-            throw new PageNotFoundException("action:{$action} is not callable in controller:" . get_class($controller));
-        }
-        yield $controller->$action(...array_values($args));
+        $this->Dispatcher = new \ZanPHP\HttpServer\Dispatcher();
     }
 
-    private function getControllerClass($controllerName)
+    public function dispatch(Request $request, Context $context)
     {
-        $parts = array_filter(explode('/', $controllerName));
-        $controllerName = join('\\', array_map('ucfirst', $parts));
-        $app = Application::getInstance();
-        $controllerRootNamespace = Config::get('controller_mapping.root_namespace', $app->getNamespace());
-        return $controllerRootNamespace . 'Controller\\' .  $controllerName . 'Controller';
+        $this->Dispatcher->dispatch($request,$context);
     }
 }

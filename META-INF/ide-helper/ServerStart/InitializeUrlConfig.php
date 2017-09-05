@@ -2,14 +2,18 @@
 
 namespace Zan\Framework\Network\Http\ServerStart;
 
-use Zan\Framework\Utilities\Types\URL;
-use Zan\Framework\Foundation\Core\Config;
 
 class InitializeUrlConfig
 {
+    private $InitializeUrlConfig;
+
+    public function __construct()
+    {
+        $this->InitializeUrlConfig = new \ZanPHP\HttpServer\ServerStart\InitializeUrlConfig();
+    }
+
     public function bootstrap($server)
     {
-        $config = Config::get('url', []);
-        URL::setConfig($config);
+        $this->InitializeUrlConfig->bootstrap($server);
     }
 }

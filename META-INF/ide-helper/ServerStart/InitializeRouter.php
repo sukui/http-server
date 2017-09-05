@@ -2,16 +2,17 @@
 
 namespace Zan\Framework\Network\Http\ServerStart;
 
-use Zan\Framework\Network\Http\Routing\RouteInitiator;
-use Zan\Framework\Foundation\Core\Config;
-
 class InitializeRouter
 {
-    /**
-     * @param $server
-     */
+    private $InitializeRouter;
+
+    public function __construct()
+    {
+        $this->InitializeRouter = new \ZanPHP\HttpServer\ServerStart\InitializeRouter();
+    }
+
     public function bootstrap($server)
     {
-        RouteInitiator::getInstance()->init(Config::get('route'));
+        $this->InitializeRouter->bootstrap($server);
     }
 }
