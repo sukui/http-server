@@ -2,16 +2,18 @@
 
 namespace Zan\Framework\Network\Http\ServerStart;
 
-use Zan\Framework\Network\Http\Routing\UrlRuleInitiator;
-use Zan\Framework\Foundation\Application;
 
 class InitializeUrlRule
 {
-    /**
-     * @param $server
-     */
+    private $InitializeUrlRule;
+
+    public function __construct()
+    {
+        $this->InitializeUrlRule = new \ZanPHP\HttpServer\ServerStart\InitializeUrlRule();
+    }
+
     public function bootstrap($server)
     {
-        UrlRuleInitiator::getInstance()->init();
+        $this->InitializeUrlRule->bootstrap($server);
     }
 } 

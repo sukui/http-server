@@ -2,15 +2,18 @@
 
 namespace Zan\Framework\Network\Http\ServerStart;
 
-use Zan\Framework\Network\Http\RequestExceptionHandlerChain;
 
 class InitializeExceptionHandlerChain
 {
-    /**
-     * @param \Zan\Framework\Network\Http\Server $server
-     */
+    private $InitializeExceptionHandlerChain;
+
+    public function __construct()
+    {
+        $this->InitializeExceptionHandlerChain = new \ZanPHP\HttpServer\ServerStart\InitializeExceptionHandlerChain();
+    }
+
     public function bootstrap($server)
     {
-        RequestExceptionHandlerChain::getInstance()->init();
+        $this->InitializeExceptionHandlerChain->bootstrap($server);
     }
 }

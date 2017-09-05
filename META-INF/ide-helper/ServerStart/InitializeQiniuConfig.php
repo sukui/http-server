@@ -2,16 +2,17 @@
 
 namespace Zan\Framework\Network\Http\ServerStart;
 
-use Zan\Framework\Foundation\Core\Config;
-use Zan\Framework\Sdk\Cdn\Qiniu;
-
 class InitializeQiniuConfig
 {
+    private $InitializeQiniuConfig;
+
+    public function __construct()
+    {
+        $this->InitializeQiniuConfig = new \ZanPHP\HttpServer\ServerStart\InitializeQiniuConfig();
+    }
+
     public function bootstrap($server)
     {
-        $config = Config::get('qiniu', []);
-        if ($config) {
-            Qiniu::setConfig($config);
-        }
+        $this->InitializeQiniuConfig->bootstrap($server);
     }
 }
