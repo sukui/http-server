@@ -92,7 +92,7 @@ class RequestHandler
         if ($this->middleWareManager) {
             $coroutine = $this->middleWareManager->handleHttpException($e);
         } else {
-            $coroutine = RequestExceptionHandlerChain::getInstance()->handle($e);
+            $coroutine = RequestExceptionHandlerChain::getInstance()->init()->handle($e);
         }
         Task::execute($coroutine, $this->context);
         $this->event->fire($this->getRequestFinishJobId());

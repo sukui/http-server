@@ -30,5 +30,6 @@ class RequestExceptionHandlerChain extends ExceptionHandlerChain implements Requ
     public function init()
     {
         $this->addHandlersByName($this->handles);
+        return $this;
     }
 }
