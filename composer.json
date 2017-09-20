@@ -9,7 +9,7 @@
   "require": {
     "php": ">=5.6",
     "zanphp/server-base": "dev-laogui",
-    "zanphp/http-view": "dev-master"
+    "zanphp/http-view": "dev-laogui"
   },
   "autoload": {
     "psr-4": {
