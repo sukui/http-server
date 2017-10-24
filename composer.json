@@ -13,7 +13,12 @@
   },
   "autoload": {
     "psr-4": {
-      "ZanPHP\\HttpServer\\": "src/"
+      "ZanPHP\\HttpServer\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ZanPHP\\HttpServer\\Tests\\": "tests"
     }
   },
   "extra": {
