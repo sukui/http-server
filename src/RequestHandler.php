@@ -84,7 +84,7 @@ class RequestHandler
         clear_ob();
 
         $repository = make(Repository::class);
-        $debug = $repository->get("debug");
+        $debug = $repository->get("debug.debug");
         if ($debug) {
             /** @noinspection PhpUndefinedVariableInspection */
             echo_exception($e);
@@ -92,7 +92,7 @@ class RequestHandler
         if ($this->middleWareManager) {
             $coroutine = $this->middleWareManager->handleHttpException($e);
         } else {
-            $coroutine = RequestExceptionHandlerChain::getInstance()->init()->handle($e);
+            $coroutine = RequestExceptionHandlerChain::getInstance()->handle($e);
         }
         Task::execute($coroutine, $this->context);
         $this->event->fire($this->getRequestFinishJobId());
