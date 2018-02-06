@@ -66,15 +66,15 @@ class Session
     {
         $this->session_map[$key] = $value;
         $this->isChanged = true;
-        yield true;
+        return true;
     }
 
     public function get($key)
     {
         if($key == null){
-            yield $this->session_map;
+            return $this->session_map;
         }else{
-            yield isset($this->session_map[$key]) ? $this->session_map[$key] : null;
+            return isset($this->session_map[$key]) ? $this->session_map[$key] : null;
         }
     }
 
@@ -82,7 +82,7 @@ class Session
     {
         unset($this->session_map[$key]);
         $this->isChanged = true;
-        yield true;
+        return true;
     }
 
     public function destroy()
@@ -99,7 +99,7 @@ class Session
 
     public function getSessionId()
     {
-        yield $this->session_id;
+        return $this->session_id;
     }
 
     public function writeBack() {
