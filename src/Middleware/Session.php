@@ -71,7 +71,11 @@ class Session
 
     public function get($key)
     {
-        yield isset($this->session_map[$key]) ? $this->session_map[$key] : null;
+        if($key == null){
+            yield $this->session_map;
+        }else{
+            yield isset($this->session_map[$key]) ? $this->session_map[$key] : null;
+        }
     }
 
     public function delete($key)
